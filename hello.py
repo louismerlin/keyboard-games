@@ -1,5 +1,5 @@
 from logishort import *
-from logipy import *
+from logipy import logi_led
 import time
 
 init()
@@ -7,14 +7,18 @@ time.sleep(1) # Give the SDK a second to initialize
 
 all(17, 28, 47)
 
-one(T, 0, 0, 0)
-one(Y, 0, 0, 0)
-one(U, 0, 0, 0)
-one(H, 0, 0, 0)
-one(J, 0, 0, 0)
-one(B, 0, 0, 0)
-one(N, 0, 0, 0)
-one(M, 0, 0, 0)
+one(logi_led.T, 0, 0, 0)
+one(logi_led.Y, 0, 0, 0)
+one(logi_led.U, 0, 0, 0)
+one(logi_led.H, 0, 0, 0)
+one(logi_led.J, 0, 0, 0)
+one(logi_led.B, 0, 0, 0)
+one(logi_led.N, 0, 0, 0)
+one(logi_led.M, 0, 0, 0)
+one(logi_led.G, 0, 0, 0)
+
+
+
 
 input('Press enter to shutdown SDK...')
 
