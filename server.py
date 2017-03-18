@@ -1,10 +1,12 @@
 from flask import Flask
 from flask import request
 from tictactoe import *
+from surfit import *
 
 app = Flask(__name__)
 
-game = TicTacToe()
+#game = TicTacToe()
+game = surfit()
 
 @app.route("/")
 def hello():

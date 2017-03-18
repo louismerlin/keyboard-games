@@ -43,7 +43,7 @@ class SurfIt:
                 one(i+1,100,1000,100)
                 one(i,0,100,0)
 
-    def getKey(self):
+    def getKey(self, c):
         if not self.ended:
             if self.rectangle[i][O].get(c) != None and c != b'\x1b':
                 self.someone_won = self.play(c)
