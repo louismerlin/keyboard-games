@@ -9,28 +9,22 @@
 <style>
     body {
         font-family: 'Open Sans', sans-serif;
+        background-color: black;
     }
 
     h1 {
         font-size: 100px;
         text-align: center;
+        color: #00a9e0;
     }
 </style>
 
 <body>
     <div id="app">
         <h1 v-on:keyup="sendKey">
-          <span style="color: red">S</span>
-          <span style="color: red">W</span>
-          <span style="color: orange">A</span>
-          <span style="color: yellow">G</span>
-          <span style="color: green">B</span>
-          <span style="color: blue">O</span>
-          <span style="color: indigo">A</span>
-          <span style="color: violet">R</span>
-          <span style="color: violet">D</span>
+          SWAGBOARD
         </h1>
-        <p style="text-align: center">{{ greeting }}</p>
+        <p style="text-align: center">{{ message }}</p>
     </div>
 
     <script>
@@ -58,20 +52,22 @@
         var app = new Vue({
             el: '#app',
             data: {
-                greeting: 'LOADING',
-                docsURL: 'http://vuejs.org/guide/',
-                gitterURL: 'https://gitter.im/vuejs/vue',
-                forumURL: 'http://forum.vuejs.org/'
+                greeting: 'Want to play a game ?',
             },
             methods: {
-                humanizeURL: function(url) {
-                    return url
-                        .replace(/^https?:\/\//, '')
-                        .replace(/\/$/, '')
-                },
                 getGreetings: function() {
-                    get("http://localhost:5000", function(greet) {
-                        app.greeting = greet;
+                    get("http://localhost:5000", function(status) {
+                        if (status == 1) {
+                          app.message = "Congrats player 1 !!";
+                          app.color = red;
+                        }
+                        if (status == 2) {
+                          app.message = "Congrats player 2 !!";
+                          app.color = green;
+                        }
+                        if (status == 0) {
+                          app.message = "That's a tie";
+                        }
                     })
                 },
                 sendKey: function(e) {
