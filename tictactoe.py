@@ -20,6 +20,7 @@ class TicTacToe:
             'n':[0x31, 2, 1],
             ',':[0x32, 2, 2]
         }
+        
         self.board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
         all(20, 20, 100)
         self.turn_count = 0
