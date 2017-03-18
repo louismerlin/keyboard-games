@@ -34,5 +34,4 @@ class _GetchWindows:
         return msvcrt.getch()
 
 
-def getch():
-    _Getch()
+getch=_Getch()
