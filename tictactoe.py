@@ -28,7 +28,7 @@ class TicTacToe:
 
     def getKey(self, c):
         if self.accepted_keys.get(c) != None and c != b'\x1b':
-            self.someone_won = play(c)
+            self.someone_won = self.play(c)
             self.turn_count += 1
         if self.someone_won == 0 and (c == b'\x1b' or self.turn_count >= 9):
             self.someone_won = -1
