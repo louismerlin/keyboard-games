@@ -28,15 +28,15 @@ class TicTacToe:
         self.ended = False
 
     def getKey(self, c):
-        if self.ended: break
-        if self.accepted_keys.get(c) != None and c != b'\x1b':
-            self.someone_won = self.play(c)
-            self.turn_count += 1
-        if self.someone_won == 0 and (c == b'\x1b' or self.turn_count >= 9):
-            self.someone_won = -1
-        if self.someone_won != 0:
-            self.ended = True
-            shutdown()
+        if not self.ended:
+            if self.accepted_keys.get(c) != None and c != b'\x1b':
+                self.someone_won = self.play(c)
+                self.turn_count += 1
+            if self.someone_won == 0 and (c == b'\x1b' or self.turn_count >= 9):
+                self.someone_won = -1
+            if self.someone_won != 0:
+                self.ended = True
+                shutdown()
 
     def draw(self):
         for key in self.accepted_keys:
