@@ -9,7 +9,7 @@ class TicTacToe:
     def __init__(self):
         init()
         time.sleep(1)
-        this.accepted_keys = {
+        self.accepted_keys = {
             't':[0x14, 0, 0],
             'y':[0x15, 0, 1],
             'u':[0x16, 0, 2],
@@ -20,10 +20,10 @@ class TicTacToe:
             'n':[0x31, 2, 1],
             ',':[0x32, 2, 2]
         }
-        this.board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+        self.board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
         all(20, 20, 100)
-        this.turn_count = 0
-        this.someone_won = 0
+        self.turn_count = 0
+        self.someone_won = 0
         draw()
 
     def getKey(self, c):
