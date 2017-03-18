@@ -18,8 +18,8 @@
     }
 
     p {
-      text-align: center;
-      color: white;
+        text-align: center;
+        color: white;
     }
 </style>
 
@@ -57,20 +57,24 @@
             el: '#app',
             data: {
                 message: 'Want to play a game ?',
+                inGame: false,
             },
             methods: {
                 getGreetings: function() {
                     get("http://localhost:5000", function(status) {
                         if (status == 1) {
-                          app.message = "Congrats player 1 !!";
-                          app.color = red;
+                            app.message = "Congrats player 1 !!";
+                            app.color = red;
                         }
                         if (status == 2) {
-                          app.message = "Congrats player 2 !!";
-                          app.color = green;
+                            app.message = "Congrats player 2 !!";
+                            app.color = green;
                         }
                         if (status == 0) {
-                          app.message = "That's a tie";
+                            app.message = "That's a tie";
+                        }
+                        if (status == -1) {
+                            app.message = "Want to play a game ?";
                         }
                     })
                 },
@@ -80,6 +84,20 @@
                     }), function(e) {
                         //console.log(e);
                     })
+                },
+                startGame: function(e) {
+                    if (e.key == 't')
+                        post("http://localhost:5000/start", JSON.stringify({
+                            g: 0
+                        }), function(e) {
+
+                        });
+                    if (e.key == 's')
+                        post("http://localhost:5000/start", JSON.stringify({
+                            g: 0
+                        }), function(e) {
+
+                        });
                 }
             },
             created() {
@@ -88,6 +106,7 @@
                 }, 1000 / 1);
                 addEventListener("keyup", function(e) {
                     app.sendKey(e)
+                    if (!inGame) app.startGame(e);
                 });
             }
         })
