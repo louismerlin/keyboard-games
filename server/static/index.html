@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Welcome to Vue</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+<style>
+    body {
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    h1 {
+        font-size: 100px;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <h1 v-on:keyup="sendKey">
+          <span style="color: red">S</span>
+          <span style="color: red">W</span>
+          <span style="color: orange">A</span>
+          <span style="color: yellow">G</span>
+          <span style="color: green">B</span>
+          <span style="color: blue">O</span>
+          <span style="color: indigo">A</span>
+          <span style="color: violet">R</span>
+          <span style="color: violet">D</span>
+        </h1>
+    </div>
+
+    <script>
+        function get(theUrl, callback) {
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function() {
+                if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                    callback(xmlHttp.responseText);
+            }
+            xmlHttp.open("GET", theUrl, true); // true for asynchronous
+            xmlHttp.send(null);
+        }
+
+        function post(url, data, callback) {
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function() {
+                if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                    callback(xmlHttp.responseText);
+            }
+            xmlHttp.open("POST", url, true);
+            xmlHttp.setRequestHeader("Content-Type", "application/json");
+            xmlHttp.send(data);
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                greeting: 'LOADING',
+                docsURL: 'http://vuejs.org/guide/',
+                gitterURL: 'https://gitter.im/vuejs/vue',
+                forumURL: 'http://forum.vuejs.org/'
+            },
+            methods: {
+                humanizeURL: function(url) {
+                    return url
+                        .replace(/^https?:\/\//, '')
+                        .replace(/\/$/, '')
+                },
+                getGreetings: function() {
+                    get("http://localhost:5000", function(greet) {
+                        app.greeting = greet;
+                    })
+                },
+                sendKey: function(e) {
+                    post("http://localhost:5000/key", JSON.stringify({
+                        k: e.key
+                    }), function(e) {
+                        //console.log(e);
+                    })
+                }
+            },
+            created() {
+                setInterval(function() {
+                    app.getGreetings();
+                }, 1000 / 1);
+                addEventListener("keyup", function(e) {
+                    app.sendKey(e)
+                });
+            }
+        })
+    </script>
+</body>
+
+</html>
