@@ -11,19 +11,22 @@ game = None
 def root():
     if game != None:
         return str(game.someone_won)
-    return -1
+    return str(-1)
 
 @app.route("/start", methods=['POST'])
 def start():
     x = request.get_json(silent=True)['g']
+    global game
     if x == 0:
         game = TicTacToe()
     if x == 1:
         game = SurfIt()
+    return "All good"
 
 @app.route("/key", methods=['POST'])
 def key():
-    game.getKey(request.get_json(silent=True)['k'])
+    if game != None:
+        game.getKey(request.get_json(silent=True)['k'])
     return "Reçu"
 
 if __name__ == "__main__":
