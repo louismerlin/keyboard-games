@@ -8,7 +8,7 @@ game = TicTacToe()
 
 @app.route("/")
 def hello():
-    return game.someone_won
+    return str(game.someone_won)
 
 @app.route("/key", methods=['POST'])
 def key():
