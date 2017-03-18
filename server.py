@@ -12,7 +12,7 @@ def hello():
 
 @app.route("/key", methods=['POST'])
 def key():
-    return game.getKey(request.get_json(silent=True)[k])
+    return game.getKey(request.get_json(silent=True)['k'])
 
 if __name__ == "__main__":
     app.run()
