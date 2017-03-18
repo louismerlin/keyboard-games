@@ -6,7 +6,7 @@ from surfit import *
 app = Flask(__name__)
 
 #game = TicTacToe()
-game = surfit()
+game = SurfIt()
 
 @app.route("/")
 def hello():
