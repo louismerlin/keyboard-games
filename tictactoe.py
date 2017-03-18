@@ -59,7 +59,7 @@ class TicTacToe:
             won = int(b[2][2])
         return won
 
-    def play(c):
+    def play(self, c):
         k = self.accepted_keys.get(c)
         player = self.turn_count % 2 + 1
         self.board[k[1]][k[2]] = player
