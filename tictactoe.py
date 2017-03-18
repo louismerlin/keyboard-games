@@ -24,7 +24,7 @@ class TicTacToe:
         all(20, 20, 100)
         self.turn_count = 0
         self.someone_won = 0
-        draw()
+        self.draw()
 
     def getKey(self, c):
         if self.accepted_keys.get(c) != None and c != b'\x1b':
