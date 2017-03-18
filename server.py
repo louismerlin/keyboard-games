@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import request
-from yo import *
+from tictactoe import *
 import time
 
 app = Flask(__name__)
