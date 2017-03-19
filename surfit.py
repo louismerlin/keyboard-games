@@ -80,11 +80,13 @@ class SurfIt:
 
         if self.bullets[0] != None and self.bullets[1] != None:
             if self.bullets[0][0] == self.bullets[1][0] and (self.bullets[0][1] + self.bullets[1][1]) >= 10:
-                #TODO SWAG EXPLOSION
                 for y in range(0, 10):
                     one(rectangle[self.bullets[0][0]][y], 100, 100, 100)
+                #one(rectangle[self.bullets[0][0]][5],40,0,99)
+                #logi_led_pulse_lighting(40,0,99,30,5)
                 self.bullets[0] = None
                 self.bullets[1] = None
+
         if self.lives[0] <= 0:
             self.ended = True
             self.someone_won = 2

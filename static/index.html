@@ -63,12 +63,12 @@
                 getGreetings: function() {
                     get("http://localhost:5000", function(status) {
                         if (status == 1) {
-                            app.message = "Congrats player 1 !!";
+                            app.message = "Player 1 wins!";
                             app.color = 'red';
                             app.inGame = false;
                         }
                         if (status == 2) {
-                            app.message = "Congrats player 2 !!";
+                            app.message = "Player 2 wins!";
                             app.color = 'green';
                             app.inGame = false;
                         }
