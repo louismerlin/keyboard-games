@@ -4,11 +4,21 @@
 <head>
     <title>Welcome to Vue</title>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 </head>
 <style>
     body {
-        font-family: "medium", Helvetica, sans-serif;
-        background-color: black;
+        font-family: 'Montserrat', sans-serif;
+        color: white;
+        /* For browsers that do not support gradients */
+        background: -webkit-radial-gradient(#282828 1%, black 90%);
+        /* Safari 5.1 to 6.0 */
+        background: -o-radial-gradient(#282828 1%, black 90%);
+        /* For Opera 11.6 to 12.0 */
+        background: -moz-radial-gradient(#282828 1%, black 90%);
+        /* For Firefox 3.6 to 15 */
+        background: radial-gradient(#282828 1%, black 90%);
+        /* Standard syntax */
     }
 
     h1 {
@@ -19,16 +29,39 @@
 
     p {
         text-align: center;
-        color: white;
+    }
+
+    #main-element {
+        width: 60%;
+        margin: auto;
+        height: 600px;
+        display: flex;
+    }
+    #tictactoe {
+      width: 50%;
+      padding-top: 40%;
+      text-align: center;
+      color: white;
+    }
+    #surfit {
+      width: 50%;
+      left: 50%;
+      padding-top: 40%;
+      text-align: center;
+      color: #00a9e0;
     }
 </style>
 
 <body>
     <div id="app">
         <h1 v-on:keyup="sendKey">
-          SWAGBOARD
+          RAINBOARD
         </h1>
         <p>{{ message }}</p>
+        <div id="main-element">
+          <div id="tictactoe"><h2>Tic Tac Toe<h2></div>
+          <div id="surfit"><h2>Surf It</h2></div>
+        </div>
     </div>
 
     <script>
@@ -89,7 +122,7 @@
                     })
                 },
                 startGame: function(e) {
-                  app.inGame = true;
+                    app.inGame = true;
                     if (e.key == "t")
                         post("http://localhost:5000/start", JSON.stringify({
                             g: 0
