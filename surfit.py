@@ -27,7 +27,8 @@ class SurfIt:
         self.draw()
         self.physics()
         time.sleep(0.1)
-        self.loop()
+        if not self.ended:
+            self.loop()
 
     def draw(self):
         #all(100, 100, 100)
@@ -143,10 +144,10 @@ class SurfIt:
                 self.protect(1, 3)
 
 
-            elif self.someone_won !=0:
-                self.ended = True
+        if self.someone_won !=0:
+            self.ended = True
 
-                shutdown()
+            shutdown()
 
 
     def block(self,r,i):
